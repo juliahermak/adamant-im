@@ -6,8 +6,7 @@ on:
       - dev
 
 env:
-  SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-  DEPLOY_TO_DOMAIN: https://dev.adamant.im
+  FLEEK_API_KEY: ${{ secrets.FLEEK_API_KEY }}
 
 jobs:
   setup-build-publish-deploy:
@@ -18,23 +17,11 @@ jobs:
       - name: Checkout repository 🛎️
         uses: actions/checkout@v3
 
-      - name: Setup Node version 🍀
-        uses: actions/setup-node@v3
+      - name: Deploy 🚀
+        id: deploy
+        uses: fleekhq/action-deploy@v1
         with:
-          node-version: '16'
+          apiKey: ${{ FLEEK_API_KEY }}
 
-      - name: Install dependencies ⚙️
-        run: npm ci
-
-      - name: Build PWA 🛠️
-        run: npm run build
-
-      - name: Archive artifacts 📁
-        uses: actions/upload-artifact@v3
-        with:
-          path: dist
-
-      - name: Deploy to surge 🚀
-        run: |
-          npm install --global surge
-          surge ./dist $DEPLOY_TO_DOMAIN --token $SURGE_TOKEN
+      - name: Get the output url
+        run: echo "Deploy url is ${{ steps.deploy.outputs.deployUrl }}"
