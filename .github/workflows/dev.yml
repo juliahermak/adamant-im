@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - dev
+  workflow_dispatch:
 
 env:
   FLEEK_API_KEY: ${{ secrets.FLEEK_API_KEY }}
