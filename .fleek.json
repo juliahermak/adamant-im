@@ -1,7 +1,15 @@
 {
+  "site": {
+    "id": "25555c5e-44e1-4799-a26d-6a0b807561f7",
+    "team": "9c275b7a-2064-4f72-8f71-b4ec5b1919ed",
+    "platform": "ipfs",
+    "source": "github",
+    "name": "dev-adamant-im"
+  },
   "build": {
-    "image": "node:16-alpine",
+    "baseDir": "",
+    "publicDir": "dist",
     "command": "npm ci && npm run build",
-    "publicDir": "dist"
+    "rootDir": ""
   }
 }

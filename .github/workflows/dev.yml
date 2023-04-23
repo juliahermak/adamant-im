@@ -23,7 +23,7 @@ jobs:
         id: deploy
         uses: fleekhq/action-deploy@v1
         with:
-          apiKey: ${{ FLEEK_API_KEY }}
+          apiKey: $FLEEK_API_KEY
 
       - name: Get the output url
         run: echo "Deploy url is ${{ steps.deploy.outputs.deployUrl }}"
