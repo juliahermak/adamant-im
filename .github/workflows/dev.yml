@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - dev
+      - feat/fleek
   workflow_dispatch:
 
 env:
